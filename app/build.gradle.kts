@@ -35,6 +35,14 @@ android {
     kotlinOptions {
         jvmTarget = "11"
     }
+    dataBinding {
+        enable = true
+    }
+
+    buildFeatures {
+        viewBinding  = true
+        dataBinding =  true
+    }
 }
 
 dependencies {
@@ -46,4 +54,25 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
+    // CameraX core library
+    implementation (libs.androidx.camera.core)
+
+    // CameraX Camera2 implementation
+    implementation (libs.camera.camera2)
+
+    // CameraX Lifecycle library
+    implementation (libs.camera.lifecycle)
+
+    // CameraX View class
+    implementation (libs.androidx.camera.view)
+
+    // For permission handling
+    implementation (libs.androidx.activity.ktx)
+    implementation (libs.androidx.fragment.ktx)
+
+    // For image processing (optional)
+    implementation (libs.androidx.concurrent.futures.ktx)
+    implementation (libs.glide)
+
 }

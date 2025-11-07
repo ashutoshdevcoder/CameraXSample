@@ -1,19 +1,128 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.camera.view.PreviewView
+            android:id="@+id/preview_view"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvStatus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="12dp"
+            android:layout_marginBottom="12dp"
+            android:background="@android:color/transparent"
+            android:paddingHorizontal="6dp"
+            android:paddingVertical="6dp"
+            android:textAlignment="center"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toTopOf="@+id/shutter_button"
+            tools:text="No face detected"
+            tools:visibility="visible" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/preview_image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/black"
+            android:visibility="gone" />
+
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/shutter_button"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:foreground="?attr/selectableItemBackground"
+            android:visibility="visible"
+            app:cardBackgroundColor="@android:color/transparent"
+            app:cardCornerRadius="35dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias=".975"
+            app:strokeColor="@android:color/white"
+            app:strokeWidth="2dp"
+            tools:visibility="visible">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="4dp"
+                android:background="@drawable/bg_circle"
+                android:backgroundTint="@android:color/white" />
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/accept_button"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="32dp"
+            android:foreground="?attr/selectableItemBackground"
+            android:visibility="gone"
+            app:cardBackgroundColor="@android:color/holo_blue_light"
+            app:cardCornerRadius="25dp"
+            app:layout_constraintBottom_toBottomOf="@+id/shutter_button"
+            app:layout_constraintStart_toEndOf="@+id/shutter_button"
+            app:layout_constraintTop_toTopOf="@+id/shutter_button"
+            tools:visibility="visible">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="14dp"
+                android:src="@drawable/ic_check_mini" />
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/reject_button"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginEnd="32dp"
+            android:foreground="?attr/selectableItemBackground"
+            android:visibility="gone"
+            app:cardBackgroundColor="@android:color/holo_blue_light"
+            app:cardCornerRadius="25dp"
+            app:layout_constraintBottom_toBottomOf="@+id/shutter_button"
+            app:layout_constraintEnd_toStartOf="@+id/shutter_button"
+            app:layout_constraintTop_toTopOf="@+id/shutter_button"
+            tools:visibility="visible">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:tint="@android:color/white"
+                android:layout_margin="12dp"
+                android:src="@drawable/ic_quit"
+                android:tint="@android:color/white" />
+        </com.google.android.material.card.MaterialCardView>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/flip_lens"
+            android:visibility="gone"
+            tools:visibility="visible"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/ic_flip_camera"
+            app:layout_constraintStart_toEndOf="@id/shutter_button"
+            app:layout_constraintBottom_toBottomOf="@+id/shutter_button"
+            app:layout_constraintTop_toTopOf="@id/shutter_button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias=".95" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
